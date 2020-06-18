@@ -1,10 +1,28 @@
-public class ArrayQueue<Item> {
+import java.util.Iterator;
+
+public class ArrayQueue<Item> implements Iterable<Item> {
     private int head = 0;
     private int tail = 0;
     private Item[] items;
 
+    private class ArrayIterator implements Iterator<Item> {
+        private int i = head;
+
+        public boolean hasNext() {
+            return i == tail;
+        }
+
+        public Item next() {
+            return items[i++];
+        }
+    }
+
     public ArrayQueue() {
         items = (Item[]) new Object[1];
+    }
+
+    public Iterator<Item> iterator() {
+        return new ArrayIterator();
     }
 
     public boolean isEmpty() {
@@ -55,11 +73,17 @@ public class ArrayQueue<Item> {
 
         for (String word : stringList) {
             if (word.equals("-")) {
-                System.out.print(queue.dequeue() + " ");
+                //System.out.print(queue.dequeue() + " ");
             }
             else {
                 queue.enqueue(word);
             }
+        }
+
+        System.out.print("\n");
+
+        for (String word : queue) {
+            System.out.print(word + " ");
         }
     }
 }

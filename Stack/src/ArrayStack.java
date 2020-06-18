@@ -1,9 +1,27 @@
-public class ArrayStack<Item> {
+import java.util.Iterator;
+
+public class ArrayStack<Item> implements Iterable<Item> {
     private Item[] items;
     private int N = 0;
 
+    private class ReverseArrayIterator implements Iterator<Item> {
+        private int i = N;
+
+        public boolean hasNext() {
+            return i > 0;
+        }
+
+        public Item next() {
+            return items[--i];
+        }
+    }
+
     public ArrayStack() {
         items = (Item[]) new Object[1];
+    }
+
+    public Iterator<Item> iterator() {
+        return new ReverseArrayIterator();
     }
 
     public boolean isEmpty() {
@@ -46,11 +64,17 @@ public class ArrayStack<Item> {
 
         for (String word : stringList) {
             if (word.equals("-")) {
-                System.out.print(stack.pop() + " ");
+                //System.out.print(stack.pop() + " ");
             }
             else {
                 stack.push(word);
             }
+        }
+
+        System.out.print("\n");
+
+        for (String word : stack) {
+            System.out.print(word + " ");
         }
     }
 }

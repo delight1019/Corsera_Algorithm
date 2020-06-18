@@ -52,11 +52,17 @@ public class LinkedListStack<Item> implements Iterable<Item> {
 
         for (String word : stringList) {
             if (word.equals("-")) {
-                System.out.print(stack.pop() + " ");
+                //System.out.print(stack.pop() + " ");
             }
             else {
                 stack.push(word);
             }
+        }
+
+        System.out.print("\n");
+
+        for (String word : stack) {
+            System.out.print(word + " ");
         }
     }
 }

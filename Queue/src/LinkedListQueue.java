@@ -1,9 +1,30 @@
-public class LinkedListQueue<Item> {
+import java.util.Iterator;
+
+public class LinkedListQueue<Item> implements Iterable<Item> {
     private Node first, last;
 
     private class Node {
         Item item;
         Node next;
+    }
+
+    private class LinkedListIterator implements Iterator<Item> {
+        private Node current = first;
+
+        public boolean hasNext() {
+            return (current != last.next);
+        }
+
+        public Item next() {
+            Item item = current.item;
+            current = current.next;
+
+            return item;
+        }
+    }
+
+    public Iterator<Item> iterator() {
+        return new LinkedListIterator();
     }
 
     public boolean isEmpty() {
@@ -41,11 +62,17 @@ public class LinkedListQueue<Item> {
 
         for (String word : stringList) {
             if (word.equals("-")) {
-                System.out.print(queue.dequeue() + " ");
+                //System.out.print(queue.dequeue() + " ");
             }
             else {
                 queue.enqueue(word);
             }
+        }
+
+        System.out.print("\n");
+
+        for (String word : queue) {
+            System.out.print(word + " ");
         }
     }
 }
