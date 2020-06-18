@@ -38,4 +38,19 @@ public class ArrayStack<Item> {
 
         items = copy;
     }
+
+    public static void main(String[] args) {
+        ArrayStack<String> queue = new ArrayStack<String>();
+
+        String[] stringList = {"to", "be", "or", "not", "to", "-", "be", "-", "-", "that", "-", "-", "-", "is"};
+
+        for (String word : stringList) {
+            if (word.equals("-")) {
+                System.out.print(queue.pop() + " ");
+            }
+            else {
+                queue.push(word);
+            }
+        }
+    }
 }

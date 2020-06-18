@@ -33,4 +33,19 @@ public class LinkedListQueue<Item> {
 
         return item;
     }
+
+    public static void main(String[] args) {
+        LinkedListQueue<String> queue = new LinkedListQueue<String>();
+
+        String[] stringList = {"to", "be", "or", "not", "to", "-", "be", "-", "-", "that", "-", "-", "-", "is"};
+
+        for (String word : stringList) {
+            if (word.equals("-")) {
+                System.out.print(queue.dequeue() + " ");
+            }
+            else {
+                queue.enqueue(word);
+            }
+        }
+    }
 }

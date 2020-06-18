@@ -31,6 +31,8 @@ public class ArrayQueue<Item> {
 
         if (!isEmpty() && (tail - head) == items.length / 4) {
             resize(items.length / 2);
+            tail -= head;
+            head = 0;
         }
 
         return item;
@@ -40,9 +42,24 @@ public class ArrayQueue<Item> {
         Item[] copy = (Item[]) new Object[capacity];
 
         for (int i = head; i < tail; i++) {
-            copy[i] = items[i];
+            copy[i - head] = items[i];
         }
 
         items = copy;
+    }
+
+    public static void main(String[] args) {
+        ArrayQueue<String> queue = new ArrayQueue<String>();
+
+        String[] stringList = {"to", "be", "or", "not", "to", "-", "be", "-", "-", "that", "-", "-", "-", "is"};
+
+        for (String word : stringList) {
+            if (word.equals("-")) {
+                System.out.print(queue.dequeue() + " ");
+            }
+            else {
+                queue.enqueue(word);
+            }
+        }
     }
 }

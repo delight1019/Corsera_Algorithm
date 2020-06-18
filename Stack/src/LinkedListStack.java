@@ -1,9 +1,34 @@
-public class LinkedListStack<Item> {
+import java.util.Iterator;
+
+public class LinkedListStack<Item> implements Iterable<Item> {
     private Node first = null;
 
     private class Node {
         Item item;
         Node next;
+    }
+
+    private class LinkedListIterator implements Iterator<Item> {
+        private Node current = first;
+
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        public void remove() {
+            /* not supported */
+        }
+
+        public Item next() {
+            Item item = current.item;
+            current = current.next;
+
+            return item;
+        }
+    }
+
+    public Iterator<Item> iterator() {
+        return new LinkedListIterator();
     }
 
     public boolean isEmpty() {
@@ -22,5 +47,20 @@ public class LinkedListStack<Item> {
         first = first.next;
 
         return item;
+    }
+
+    public static void main(String[] args) {
+        LinkedListStack<String> queue = new LinkedListStack<>();
+
+        String[] stringList = {"to", "be", "or", "not", "to", "-", "be", "-", "-", "that", "-", "-", "-", "is"};
+
+        for (String word : stringList) {
+            if (word.equals("-")) {
+                System.out.print(queue.pop() + " ");
+            }
+            else {
+                queue.push(word);
+            }
+        }
     }
 }
