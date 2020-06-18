@@ -49,7 +49,7 @@ public class ArrayQueue<Item> {
     }
 
     public static void main(String[] args) {
-        ArrayQueue<String> queue = new ArrayQueue<String>();
+        ArrayQueue<String> queue = new ArrayQueue<>();
 
         String[] stringList = {"to", "be", "or", "not", "to", "-", "be", "-", "-", "that", "-", "-", "-", "is"};
 

@@ -15,10 +15,6 @@ public class LinkedListStack<Item> implements Iterable<Item> {
             return current != null;
         }
 
-        public void remove() {
-            /* not supported */
-        }
-
         public Item next() {
             Item item = current.item;
             current = current.next;
@@ -50,16 +46,16 @@ public class LinkedListStack<Item> implements Iterable<Item> {
     }
 
     public static void main(String[] args) {
-        LinkedListStack<String> queue = new LinkedListStack<>();
+        LinkedListStack<String> stack = new LinkedListStack<>();
 
         String[] stringList = {"to", "be", "or", "not", "to", "-", "be", "-", "-", "that", "-", "-", "-", "is"};
 
         for (String word : stringList) {
             if (word.equals("-")) {
-                System.out.print(queue.pop() + " ");
+                System.out.print(stack.pop() + " ");
             }
             else {
-                queue.push(word);
+                stack.push(word);
             }
         }
     }

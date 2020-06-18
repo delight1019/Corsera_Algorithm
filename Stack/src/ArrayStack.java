@@ -40,16 +40,16 @@ public class ArrayStack<Item> {
     }
 
     public static void main(String[] args) {
-        ArrayStack<String> queue = new ArrayStack<String>();
+        ArrayStack<String> stack = new ArrayStack<>();
 
         String[] stringList = {"to", "be", "or", "not", "to", "-", "be", "-", "-", "that", "-", "-", "-", "is"};
 
         for (String word : stringList) {
             if (word.equals("-")) {
-                System.out.print(queue.pop() + " ");
+                System.out.print(stack.pop() + " ");
             }
             else {
-                queue.push(word);
+                stack.push(word);
             }
         }
     }
